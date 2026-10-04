@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pack de matrices para la planeación pedagógica</title>
+<meta name="description" content="Descarga de las siete matrices de planeación pedagógica (Ciencia y Tecnología y Formación Artística y Cultural) para docentes y líderes pedagógicos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Source+Sans+3:wght@400;500;600&display=swap">
+<style>
+/* Paleta institucional Colsubsidio: azul marino, azul corporativo y amarillo */
+:root{
+  --bg:#f5f7fb; --surface:#ffffff; --tint:#eaf0f8; --fg:#0d1f3c; --muted:#4d5e7a;
+  --line:#d5deeb; --navy:#002060; --blue:#0967b1; --blue-ink:#0967b1;
+  --yellow:#fecf01; --on-yellow:#002060; --on-navy:#ffffff;
+  --pending:#7a5a00; --pending-bg:#fff6cc;
+  --display:"Montserrat","Segoe UI",Arial,sans-serif;
+  --body:"Source Sans 3","Segoe UI",Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0a1226; --surface:#111c36; --tint:#16244a; --fg:#e6ecf7; --muted:#a3b2cc;
+  --line:#26365e; --navy:#0b2b72; --blue:#4c9be0; --blue-ink:#8cc2f2;
+  --yellow:#fecf01; --on-yellow:#002060; --on-navy:#ffffff;
+  --pending:#fde27a; --pending-bg:#2b2610; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0a1226; --surface:#111c36; --tint:#16244a; --fg:#e6ecf7; --muted:#a3b2cc;
+  --line:#26365e; --navy:#0b2b72; --blue:#4c9be0; --blue-ink:#8cc2f2;
+  --yellow:#fecf01; --on-yellow:#002060; --on-navy:#ffffff;
+  --pending:#fde27a; --pending-bg:#2b2610; color-scheme:dark}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.5;padding-inline:16px;padding-block:20px 28px}
+.wrap{max-width:1180px;margin:0 auto;display:grid;gap:18px}
+header{display:flex;flex-wrap:wrap;gap:14px 24px;align-items:flex-end;justify-content:space-between;border-left:6px solid var(--yellow);padding-left:16px}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(21px,2.8vw,30px);line-height:1.2;margin:0;color:var(--navy);text-wrap:balance}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) h1{color:var(--fg)}}
+:root[data-theme="dark"] h1{color:var(--fg)}
+.lede{margin:6px 0 0;color:var(--muted);max-width:64ch}
+.roles{display:flex;flex-wrap:wrap;gap:8px}
+.role{font:600 14px var(--display);border:2px solid var(--navy);background:var(--surface);color:var(--navy);border-radius:999px;padding:7px 16px;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+.role::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--yellow);flex-shrink:0}
+.role:hover{background:var(--tint)}
+.role[aria-pressed="true"]{background:var(--navy);color:var(--on-navy)}
+.role:focus-visible,.profile-close:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .role{border-color:var(--blue);color:var(--fg)}}
+:root[data-theme="dark"] .role{border-color:var(--blue);color:var(--fg)}
+.profile{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--yellow);border-radius:10px;padding:18px 20px;display:grid;gap:14px}
+.profile-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.profile-head h2{margin:0;font:800 19px/1.25 var(--display);color:var(--blue-ink)}
+.profile-head p{margin:4px 0 0;color:var(--muted);max-width:72ch}
+.profile-close{border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:7px;width:34px;height:34px;cursor:pointer;font-size:18px;line-height:1;flex-shrink:0}
+.profile-cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:860px){.profile-cols{grid-template-columns:1fr}}
+.profile-cols h3{margin:0 0 6px;font:700 12px var(--display);letter-spacing:.07em;text-transform:uppercase;color:var(--fg)}
+.profile-cols ul{margin:0;padding-left:18px;display:grid;gap:4px;font-size:14px}
+.profile-cols li::marker{color:var(--blue)}
+.uses{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:12.5px;font-weight:600;border-radius:999px;padding:3px 10px;border:1px solid var(--line)}
+.chip.main{background:var(--yellow);border-color:var(--yellow);color:var(--on-yellow)}
+.chip.ref{background:var(--tint);color:var(--fg)}
+.tag{justify-self:start;font-size:11.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:4px;padding:2px 8px}
+.tag.main{background:var(--yellow);color:var(--on-yellow)}
+.tag.ref{background:var(--tint);color:var(--muted);border:1px solid var(--line)}
+.item.dim{opacity:.55}
+.item.focus{border-color:var(--yellow);box-shadow:0 0 0 1px var(--yellow)}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;border-bottom:2px solid var(--line);padding-bottom:10px}
+.tab{font:600 14px var(--display);border:1px solid var(--line);background:var(--surface);color:var(--fg);padding:9px 16px;border-radius:8px;cursor:pointer}
+.tab[aria-selected="true"]{background:var(--navy);border-color:var(--navy);color:var(--on-navy);box-shadow:inset 0 -3px 0 var(--yellow)}
+.tab:focus-visible,.btn:focus-visible,footer a:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+@media (max-width:860px){.grid{grid-template-columns:1fr}}
+.phase{background:var(--tint);display:flex;flex-direction:column;min-width:0}
+.phase h2{margin:0;background:var(--navy);color:var(--on-navy);font:700 14px/1.3 var(--display);letter-spacing:.02em;text-transform:uppercase;padding:14px 16px;min-height:62px;display:flex;align-items:center;gap:10px;border-bottom:4px solid var(--yellow)}
+.phase h2 .pn{display:inline-grid;place-items:center;flex-shrink:0;width:28px;height:28px;border-radius:50%;background:var(--yellow);color:var(--on-yellow);font-size:14px}
+.items{display:grid;gap:12px;padding:14px}
+.item{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:8px}
+.item h3{margin:0;font:700 15px/1.3 var(--display);color:var(--blue-ink);display:flex;gap:8px}
+.num{color:var(--fg);font-variant-numeric:tabular-nums}
+.item p{margin:0;font-size:14px;color:var(--muted)}
+.files{display:grid;gap:6px;margin-top:2px}
+.file{display:flex;align-items:center;gap:8px;justify-content:space-between;border-top:1px dashed var(--line);padding-top:6px;min-width:0}
+.fname{font-size:13.5px;font-weight:600;min-width:0;overflow-wrap:anywhere}
+.fname small{display:block;color:var(--muted);font-weight:400;font-size:12px}
+.acts{display:flex;gap:6px;flex-shrink:0}
+.btn{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:7px;border:1px solid var(--line);color:var(--blue-ink);background:var(--surface);text-decoration:none;transition:transform .12s}
+.btn.dl{background:var(--yellow);border-color:var(--yellow);color:var(--on-yellow)}
+.btn:hover{transform:translateY(-1px)}
+.btn svg{width:18px;height:18px}
+.pending{font-size:13px;color:var(--pending);background:var(--pending-bg);border-radius:6px;padding:6px 10px}
+footer{font-size:13px;color:var(--muted);display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px}
+footer a{color:var(--blue-ink);font-weight:600}
+.legend{display:inline-flex;align-items:center;gap:6px}
+.legend .btn{width:24px;height:24px}
+.legend .btn svg{width:14px;height:14px}
+@media (prefers-reduced-motion:reduce){.btn{transition:none}.btn:hover{transform:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>Pack de matrices para la planeación pedagógica</h1>
+      <p class="lede">Descargue las siete matrices en el orden de la ruta de diseño: del diagnóstico del pensamiento a la aplicación en el aula, ciclos 1 a 5.</p>
+    </div>
+    <div class="roles" role="group" aria-label="Ver perfil por rol">
+      <button class="role" id="role-docente" data-role="docente" aria-pressed="false" aria-controls="profile">Docente</button>
+      <button class="role" id="role-lider" data-role="lider" aria-pressed="false" aria-controls="profile">Líder pedagógico</button>
+    </div>
+  </header>
+
+  <section class="profile" id="profile" hidden aria-live="polite"></section>
+
+  <div class="tabs" role="tablist" aria-label="Modalidad">
+    <button class="tab" role="tab" id="tab-ct" aria-selected="true" data-mod="ct">Ciencia y Tecnología</button>
+    <button class="tab" role="tab" id="tab-fac" aria-selected="false" data-mod="fac">Formación Artística y Cultural</button>
+  </div>
+
+  <section class="grid" id="grid" aria-live="polite"></section>
+
+  <footer>
+    <span class="legend"><span class="btn dl" id="lg-dl" aria-hidden="true"></span> Descargar (Excel o Word)</span>
+    <span class="legend"><span class="btn" id="lg-open" aria-hidden="true"></span> Abrir en Google Drive</span>
+    <a href="https://drive.google.com/drive/folders/1bkBRyjmmtF6xvxLbuQUkkbaaTC23xuo3" target="_blank" rel="noopener">Carpeta completa de matrices</a>
+  </footer>
+</div>
+
+<script>
+const ICON_DL='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>';
+const ICON_OPEN='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6"/><path d="M20 4 10 14"/><path d="M19 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h5"/></svg>';
+document.getElementById('lg-dl').innerHTML=ICON_DL;
+document.getElementById('lg-open').innerHTML=ICON_OPEN;
+
+const S=(id)=>({kind:'sheet',id}), D=(id)=>({kind:'doc',id});
+
+const PHASES=[
+  {n:1,title:'Diagnóstico y sistema de pensamiento',items:[1,2]},
+  {n:2,title:'Estructuración macro',items:[3,4]},
+  {n:3,title:'Aplicación en aula',items:[5,6,7]}
+];
+
+const MATRICES={
+  1:{name:'Matriz de Caracterización',desc:'Define el perfil neurobiológico, evolutivo y del contexto directo de los estudiantes según su ciclo vital.'},
+  2:{name:'Matriz de Habilidades del Pensamiento',desc:'Estructura la ruta evolutiva del pensamiento, desde niveles uniestructurales hasta la abstracción compleja.'},
+  3:{name:'Aprendizajes Estructurantes',desc:'Saberes, haceres y actitudes indispensables que se garantizan para consolidar las competencias.'},
+  4:{name:'Matriz Global',desc:'Alineación transversal que unifica las modalidades y articula la progresión por todos los ciclos.'},
+  5:{name:'Malla Curricular',desc:'Itinerario por ciclo con saberes, metodologías vivenciales, preguntas clave y adaptaciones DUA.'},
+  6:{name:'Matriz ABP',desc:'Núcleo de diseño de proyectos transversales basados en retos del territorio y preguntas del contexto.'},
+  7:{name:'Matrices de Diseño de Experiencias',desc:'Dosificación de retos y andamiaje a lo largo de las sesiones pedagógicas en el tiempo.'}
+};
+
+const FILES={
+  ct:{
+    1:[{label:'Caracterización disciplinar CT',sub:'Ciclos 1 a 5 · armonizada',f:S('1nKquJjww5yQSG9OFknVxllgqChAppdwCjDG0s2L5c3I')}],
+    2:[{label:'Habilidades del pensamiento CT',sub:'Ciclos 1 a 5 · armonizada',f:S('1iwjcGfiWVCvS2XqE5akQLprK04mg0PY1zJoA0IrgZ0w')}],
+    3:[{label:'Aprendizajes estructurantes CT',sub:'Ciclos 1 a 5 · armonizada',f:S('1NLJzgupw2Fbssx81il9SimaZkyQR2rjoi3ab_JlQDmk')}],
+    4:[{label:'Matriz Global CILAB',sub:'Ciclos 1 a 5 · armonizada',f:S('1J0i4lVLc5iMI0mL0RMYjRVgIlchEtCXTDG7uffRmQTE')},
+       {label:'Matriz Global NEOTECH',sub:'Ciclos 1 a 5 · armonizada',f:S('1P8LFZvHHVb2QwwszptgZNpzShH4Cd0dcY6chJvXkaIg')}],
+    5:[{label:'Malla Curricular CILAB',sub:'Ciclos 1 a 5',f:S('1VeggBzk2n-XkHPKEfVtIANP-sf-xK3FZ_8MarHQSYXI')},
+       {label:'Malla Curricular NEOTECH',sub:'Ciclos 1 a 5',f:S('1Vu5ZxUX9Yt8hz_sw5qGYw1Q-GE6KomGwjyGpSAL0t2A')}],
+    6:[{label:'Matriz ABP–DUA CILAB',sub:'Ciclos 1 a 5',f:S('1ACT92ro7BZlpWTBO3VwUBzcvVr_i6NcutNlUAZpx4YM')},
+       {label:'Matriz ABP–DUA NEOTECH',sub:'Ciclos 1 a 5',f:S('1b-znh8ogD_ee-yqhjpIANo4CpAvaE1HkX290Orz2mvU')}],
+    7:[{label:'Diseño de experiencias CT',sub:'Documento Word',f:D('1yXrD87UUOgD866uPdkNVt4wbIE7GRDIvqZu1Ni5N5ZM')}]
+  },
+  fac:{
+    1:[{label:'Desarrollo, pensamiento y mediación por ciclos',sub:'Desarrollo disciplinar',f:S('1czDADfFq-e-wHWCk0Jj11KEJLk7oy-GPJ75BX4xm1uU')}],
+    2:[{label:'Desarrollo, pensamiento y mediación por ciclos',sub:'Habilidades del pensamiento',f:S('1a9v8gHk6vspWFQOXFNc8OoIoOJ5tGXQ7sLLxStqJLmE')}],
+    3:null,
+    4:[{label:'Matriz Global JEC FAC',sub:'Todas las líneas artísticas',f:S('1qMtIvTj7Ql5ikrupYsUeMu6WGtxCAcUAEN79U6ncaVc')}],
+    5:[{label:'Malla Curricular Música',sub:'Ciclos 1 a 5',f:S('1_J6eNxSrVSjNMcn5G-0AEfyHnHHuFa06N0KifXSmG6g')},
+       {label:'Malla Curricular Teatro',sub:'Ciclos 1 a 5',f:S('1G5gnTDp2AqGtrHs1WmG9xzo80_BCZkln7oqg6bc_doQ')},
+       {label:'Malla Curricular Danza',sub:'Ciclos 1 a 5',f:S('1uYGU2SINSrEoiy_zmF9-A93dIDTWiUGDjpOTc7N57Hw')},
+       {label:'Malla Curricular Artes Plásticas y Visuales',sub:'Ciclos 1 a 5',f:S('1YRqBEkKFEONNqWghGzoTb1OnMK5BFfxibNmGQFumnaE')}],
+    6:[{label:'Matriz ABP Artes',sub:'Proyectos transversales',f:S('13zkDCZ6oyjxA3CDRWBrE2ke_1CJgQAdgvaF_-DDvSLg')}],
+    7:[{label:'Diseño de experiencias FAC',sub:'Documento Word',f:D('1nM-WZwLI9RS_6Vh-xxZ51AKWaNLw-yziH4XEfxrtq9M')}]
+  }
+};
+
+const ROLES={
+  docente:{
+    name:'Docente',
+    lede:'Orienta las sesiones con los estudiantes del ciclo y convierte la planeación macro en experiencias de aprendizaje en el aula y el territorio.',
+    tasks:['Caracterizar a su grupo al inicio del proceso','Planear sesiones a partir de la malla del ciclo y la línea a cargo','Diseñar y acompañar proyectos ABP con retos del territorio','Aplicar ajustes DUA y registrar evidencias de aprendizaje'],
+    route:['Consulte las matrices 1 y 2 para conocer el perfil y la ruta de pensamiento del ciclo','Ubique en la matriz 5 los saberes, preguntas clave y adaptaciones DUA','Formule el proyecto en la matriz 6','Dosifique retos y andamiaje sesión a sesión en la matriz 7'],
+    main:[5,6,7], ref:[1,2]
+  },
+  lider:{
+    name:'Líder pedagógico',
+    lede:'Asegura la coherencia curricular entre ciclos y modalidades, y acompaña a los docentes en la planeación, la implementación y el seguimiento.',
+    tasks:['Liderar el diagnóstico y la caracterización por sede','Velar por la progresión de aprendizajes entre ciclos','Revisar y retroalimentar mallas, proyectos ABP y diseños de experiencias','Hacer seguimiento a evidencias y proponer ajustes curriculares'],
+    route:['Valide con el equipo las matrices 1 y 2 como base diagnóstica','Use las matrices 3 y 4 para verificar la articulación macro entre ciclos y modalidades','Revise que las matrices 5, 6 y 7 de cada docente respondan a esa estructura'],
+    main:[1,2,3,4], ref:[5,6,7]
+  }
+};
+let currentRole=null, currentMod='ct';
+
+function renderProfile(){
+  const box=document.getElementById('profile');
+  document.querySelectorAll('.role').forEach(b=>b.setAttribute('aria-pressed',b.dataset.role===currentRole?'true':'false'));
+  if(!currentRole){box.hidden=true;box.innerHTML='';return;}
+  const r=ROLES[currentRole], chip=(n,c)=>`<span class="chip ${c}">${n}. ${MATRICES[n].name}</span>`;
+  box.innerHTML=`
+    <div class="profile-head"><div><h2>Perfil: ${r.name}</h2><p>${r.lede}</p></div>
+      <button class="profile-close" id="profile-close" aria-label="Cerrar perfil">×</button></div>
+    <div class="profile-cols">
+      <div><h3>Responsabilidades</h3><ul>${r.tasks.map(t=>`<li>${t}</li>`).join('')}</ul></div>
+      <div><h3>Ruta de uso sugerida</h3><ul>${r.route.map(t=>`<li>${t}</li>`).join('')}</ul></div>
+      <div><h3>Matrices del rol</h3><div class="uses">${r.main.map(n=>chip(n,'main')).join('')}${r.ref.map(n=>chip(n,'ref')).join('')}</div>
+        <p style="margin:8px 0 0;font-size:13px;color:var(--muted)">Amarillo: uso principal. Gris: consulta.</p></div>
+    </div>`;
+  box.hidden=false;
+  document.getElementById('profile-close').addEventListener('click',()=>{currentRole=null;renderProfile();render(currentMod);});
+}
+
+function urls(f){
+  return f.kind==='sheet'
+    ? {dl:'https://docs.google.com/spreadsheets/d/'+f.id+'/export?format=xlsx',open:'https://docs.google.com/spreadsheets/d/'+f.id+'/edit',fmt:'Excel'}
+    : {dl:'https://docs.google.com/document/d/'+f.id+'/export?format=docx',open:'https://docs.google.com/document/d/'+f.id+'/edit',fmt:'Word'};
+}
+const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+function render(mod){
+  document.getElementById('grid').innerHTML=PHASES.map(ph=>`
+    <div class="phase"><h2><span class="pn">${ph.n}</span>${ph.title}</h2><div class="items">
+      ${ph.items.map(n=>{
+        const m=MATRICES[n], list=FILES[mod][n];
+        const files=list ? list.map(x=>{const u=urls(x.f);return `
+          <div class="file"><div class="fname">${esc(x.label)}<small>${esc(x.sub)}</small></div>
+            <div class="acts">
+              <a class="btn dl" href="${u.dl}" target="_blank" rel="noopener" title="Descargar en ${u.fmt}" aria-label="Descargar ${esc(x.label)} en ${u.fmt}">${ICON_DL}</a>
+              <a class="btn" href="${u.open}" target="_blank" rel="noopener" title="Abrir en Google Drive" aria-label="Abrir ${esc(x.label)} en Google Drive">${ICON_OPEN}</a>
+            </div></div>`}).join('')
+          : '<div class="pending">Matriz en preparación para esta modalidad.</div>';
+        let cls='item', tag='';
+        if(currentRole){
+          const r=ROLES[currentRole];
+          if(r.main.includes(n)){cls+=' focus';tag='<span class="tag main">Uso principal</span>';}
+          else if(r.ref.includes(n)){tag='<span class="tag ref">Consulta</span>';}
+          else cls+=' dim';
+        }
+        return `<article class="${cls}">${tag}<h3><span class="num">${n}.</span>${m.name}</h3><p>${m.desc}</p><div class="files">${files}</div></article>`;
+      }).join('')}
+    </div></div>`).join('');
+}
+
+function select(mod){
+  currentMod=mod;
+  document.querySelectorAll('.tab').forEach(b=>b.setAttribute('aria-selected',b.dataset.mod===mod?'true':'false'));
+  render(mod);
+}
+document.querySelectorAll('.role').forEach(b=>b.addEventListener('click',()=>{
+  currentRole = currentRole===b.dataset.role ? null : b.dataset.role;
+  renderProfile(); render(currentMod);
+}));
+document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{
+  select(t.dataset.mod);
+  try{localStorage.setItem('pack-mod',t.dataset.mod)}catch(e){}
+}));
+let start='ct';
+try{ start = location.hash==='#fac' ? 'fac' : (location.hash==='#ct' ? 'ct' : (localStorage.getItem('pack-mod')||'ct')); }catch(e){}
+select(start);
+</script>
+</body>
+</html>
